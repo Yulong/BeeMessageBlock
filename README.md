@@ -11,16 +11,20 @@ This is an category of BeeMessage, whenever a message arrives, the block of code
 			if ( msg.succeed )
 			{
 				LOG(@"main message succeed");
-				[BeeMessage sendMessage:UserController.GET_ME_INFO withBlock:^(BeeMessage * subMsg) {
+				
+				NSDictionary * user = [msg.output dictAtPath:@"user"];
+				NSNumber * userId = [user numberAtPath:@"userId"];
+				
+				[[BeeMessage sendMessage:UserController.GET_USER_INFO withBlock:^(BeeMessage * subMsg) {
 					if(subMsg.succeed)
 					{
 						LOG(@"sub-message succeed");
 					}
-				}];
+				}] input:@"userId", userId, nil];
 			}
 			else if (msg.failed)
 			{
 				LOG(@"main message failed");
 			}
-		}] input:@"username",@"abc@xx.com",@"password",@"123456",nil];
+		}] input:@"username", @"abc@xx.com", @"password", @"123456", nil];
 
