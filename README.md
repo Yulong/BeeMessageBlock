@@ -11,7 +11,7 @@ This is an category of BeeMessage, whenever a message arrives, the block of code
 			if ( msg.succeed )
 			{
 				LOG(@"main message succeed");
-				[TJAPIMessage sendAPIMessage:UserController.GET_ME_INFO withBlock:^(BeeMessage * subMsg) {
+				[BeeMessage sendMessage:UserController.GET_ME_INFO withBlock:^(BeeMessage * subMsg) {
 					if(subMsg.succeed)
 					{
 						LOG(@"sub-message succeed");
