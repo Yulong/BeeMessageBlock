@@ -47,10 +47,7 @@ static void * BEE_MESSAGE_CALLBACK_KEY = (void *)@"BEE_MESSAGE_CALLBACK_KEY";
 
 - (void)dealloc
 {
-    if (self.handleMessageBlock)
-    {
-        self.handleMessageBlock = nil;
-    }
+    self.handleMessageBlock = nil;
 
     [self cancelRequests];
 
