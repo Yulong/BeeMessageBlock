@@ -12,8 +12,7 @@ This is an category of BeeMessage, whenever a message arrives, the block of code
 			{
 				LOG(@"main message succeed");
 				
-				NSDictionary * user = [msg.output dictAtPath:@"user"];
-				NSNumber * userId = [user numberAtPath:@"userId"];
+				NSNumber * userId = [msg.output numberAtPath:@"userId"];
 				
 				[[BeeMessage sendMessage:UserController.GET_USER_INFO withBlock:^(BeeMessage * subMsg) {
 					if(subMsg.succeed)
